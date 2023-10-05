@@ -11,12 +11,9 @@ function playRound(playerSelection, computerSelection) {
     console.log("its a tie");
     return "tie";
   } else if (
-    (playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "paper" && computerSelection === "scissors") ||
-    (playerSelection === "scissors" && computerSelection === "paper") ||
-    (playerSelection === "scissors" && computerSelection === "rock")
+    (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     console.log(
       "You Win! " + playerSelection + " beats " + computerSelection + "!"
@@ -36,32 +33,35 @@ function game() {
   let winsPl = 0;
   let winsCp = 0;
 
-  for (let i = 1; i <= 5; i++) {
-    while (winsPl || winsCp < 3 ) {
+  
+    while ((winsPl < 3) && (winsCp < 3) ) {
       const playerSelection = prompt(
         "What's your choice: Rock, Paper or Scissers?"
       );
-      const computerSelection = getComputerChoice();
+      if (playerSelection.toLowerCase() !== ("rock" || "paper" || "scissors")) {
+        console.log("wrong input!");
+      } else {
+        const computerSelection = getComputerChoice();
       const result = playRound(playerSelection, computerSelection);
       if (result === "winPl") {
             winsPl++;
       } else if (result === "winCp") {
-        winCp++;
+        winsCp++;
       } 
       console.log("result: " + winsPl + " - " + winsCp);
+      }
 
       //trying to have the end tiytle who did win the full game
     }
+
     if (winsCp === 3) {
-        return "Computer wins!";
+        console.log("Computer Wins!"+ "Result is: " + winsCp + ":" + winsPl);
     } else if (winsPl === 3) {
-        return "You won!";
-    } else {
-        return "It's a Tie!";
-    }
+      console.log("Player Wins!" + "Result is: " + winsPl + ":" + winsCp);
+    } 
 
 
-  }
+  
 }
 
 game();

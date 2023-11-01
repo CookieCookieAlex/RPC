@@ -1,67 +1,65 @@
+//global counter for player
+
+let winsPl = 0;
+let winsCp = 0;
+
+// players input buttons
+
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const score = document.getElementById("score");
+const countPl = document.getElementById("winspl");
+const countCp = document.getElementById("winscp");
+
+rock.addEventListener("click", () => {
+  playerSelection = "rock";
+  playRound(playerSelection);
+  console.log(playerSelection);
+});
+paper.addEventListener("click", () => {
+  playerSelection = "paper";
+  playRound(playerSelection);
+  console.log(playerSelection);
+});
+scissors.addEventListener("click", () => {
+  playerSelection = "scissors";
+  playRound(playerSelection);
+  console.log(playerSelection);
+});
+
+//this gives out a choice for the computer
+
 function getComputerChoice() {
   const choice = ["rock", "paper", "scissors"];
   const random = Math.floor(Math.random() * choice.length);
   return choice[random];
 }
 
-// console.log(getComputerChoice());
+//this is the logic of the game
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+  const computerSelection = getComputerChoice();
+
   if (playerSelection === computerSelection) {
-    console.log("its a tie");
-    return "tie";
+    score.textContent = "It/'s a tie";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    console.log(
-      "You Win! " + playerSelection + " beats " + computerSelection + "!"
-    );
-    return "winPl";
+    score.textContent = `You Win! ${playerSelection} beats ${computerSelection}!`;
+    winsPl++;
   } else {
-    console.log(
-      "You Lose! " + computerSelection + " beats " + playerSelection + "!"
-    );
-    return "winCp";
+    score.textContent = `You Lose! ${computerSelection} beats ${playerSelection}!`;
+    winsCp++;
   }
+
+  if (winsCp === 5) {
+    score.textContent = `Computer Wins! Result is: ${winsCp} : ${winsPl}`;
+  } else if (winsPl === 5) {
+    score.textContent = `Player Wins! Result is: ${winsPl} : ${winsCp}`;
+  }
+  countPl.textContent = `Players score:${winsPl}`;
+  countCp.textContent = `Computers score:${winsCp}`;
 }
-
-// console.log(playRound(playerSelection, computerSelection));
-
-function game() {
-  let winsPl = 0;
-  let winsCp = 0;
-
-  
-    while ((winsPl < 3) && (winsCp < 3) ) {
-      const playerSelection = prompt(
-        "What's your choice: Rock, Paper or Scissers?"
-      );
-      if (playerSelection.toLowerCase() !== ("rock" || "paper" || "scissors")) {
-        console.log("wrong input!");
-      } else {
-        const computerSelection = getComputerChoice();
-      const result = playRound(playerSelection, computerSelection);
-      if (result === "winPl") {
-            winsPl++;
-      } else if (result === "winCp") {
-        winsCp++;
-      } 
-      console.log("result: " + winsPl + " - " + winsCp);
-      }
-
-      //trying to have the end tiytle who did win the full game
-    }
-
-    if (winsCp === 3) {
-        console.log("Computer Wins!"+ "Result is: " + winsCp + ":" + winsPl);
-    } else if (winsPl === 3) {
-      console.log("Player Wins!" + "Result is: " + winsPl + ":" + winsCp);
-    } 
-
-
-  
-}
-
-game();

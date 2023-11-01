@@ -1,24 +1,72 @@
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   background-color: gray;
   height: 100vh;
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: orange;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  width: 500px;
+  height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
   background-color: blue;
 }
 
+.scoreSystem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: gray;
+  width: 500px;
+}
+
+#mainScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+#players {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px 0 50px;
+}
+.plCoun {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+#btn {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
 .btn {
   display: flex;
   justify-content: space-between;
-  margin: 5px;
+  width: 100px;
+  height: 100px;
+  margin: 10px 20px 10px 20px;
+}
+
+footer {
+  background-color: green;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }

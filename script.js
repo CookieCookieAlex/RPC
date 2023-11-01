@@ -8,7 +8,7 @@ let winsCp = 0;
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
-const score = document.getElementById("score");
+const score = document.getElementById("mainScore");
 const countPl = document.getElementById("winspl");
 const countCp = document.getElementById("winscp");
 
@@ -42,7 +42,7 @@ function playRound(playerSelection) {
   const computerSelection = getComputerChoice();
 
   if (playerSelection === computerSelection) {
-    score.textContent = "It/'s a tie";
+    score.textContent = "It's a tie!";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
@@ -56,10 +56,11 @@ function playRound(playerSelection) {
   }
 
   if (winsCp === 5) {
-    score.textContent = `Computer Wins! Result is: ${winsCp} : ${winsPl}`;
+    score.textContent = `Computer Wins! Result is: ${winsCp} : ${winsPl}!`;
   } else if (winsPl === 5) {
-    score.textContent = `Player Wins! Result is: ${winsPl} : ${winsCp}`;
+    score.textContent = `Player Wins! Result is: ${winsPl} : ${winsCp}!`;
   }
-  countPl.textContent = `Players score:${winsPl}`;
-  countCp.textContent = `Computers score:${winsCp}`;
+
+  countPl.textContent = `${winsPl}`;
+  countCp.textContent = `${winsCp}`;
 }

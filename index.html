@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   <header>
     <h1>ROCK, PAPER, SISSORS</h1>
   </header>
@@ -23,24 +24,37 @@
       </div>
       <div id="players">
         <div>
-          <p>Players score:</p>
+          <div id="plSign">?</div>
+          <p>Player: </p>
           <div id="winspl" class="plCoun">0</div>
         </div>
         <div>
-          <p>Computers score:</p>
+          <div id="cpSign">?</div>
+          <p>Computer: </p>
           <div id="winscp" class="plCoun">0</div>
         </div>
       </div>
     </div>
     <div id="btn">
-      <button id="rock" class="btn">Rock</button>
-      <button id="paper" class="btn">Paper</button>
-      <button id="scissors" class="btn">Scissors</button>
+      <button id="rock" class="btn"><img src="img/rock.png" class="img"></button>
+      <button id="paper" class="btn"><img src="img/paper.png" class="img"></button>
+      <button id="scissors" class="btn"><img src="img/scissors.png" class="img"></button>
     </div>
   </div>
   <footer>
     <h2>By Leonardo</h2>
   </footer>
+
+
+  <div id="game-over-popup" class="hidden">
+    <div id="popup-content">
+      <span id="closeButton" class="close">&times;</span>
+      <p id="popup-message"></p>
+      <button id="play-again">Play Again</button>
+    </div>
+    <div id="overlay" class="hidden"></div>
+  </div>
+
 </body>
 <script src="script.js" type="text/javascript"></script>
 

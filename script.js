@@ -45,13 +45,13 @@ function playRound(playerSelection) {
   //adding restart when someone reaches 5 wins.
 
   if (winsCp === 5) {
-    showGameOverPopup("Computer");
+    openEndPop("Computer");
   } else if (winsPl === 5) {
-    showGameOverPopup("Player");
+    openEndPop("Player");
   }
 }
 
-// players input buttons and UI
+// UI
 
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
@@ -61,6 +61,9 @@ const countPl = document.getElementById("winspl");
 const countCp = document.getElementById("winscp");
 const cpSign = document.getElementById("cpSign");
 const plSign = document.getElementById("plSign");
+const endPop = document.getElementById("end-popup");
+const restart = document.getElementById("restart");
+const overlay = document.getElementById("overlay");
 
 // event listeners
 rock.addEventListener("click", () => {
@@ -79,40 +82,26 @@ scissors.addEventListener("click", () => {
   console.log(playerSelection);
 });
 
-// Function to show the game-over popup
-function showGameOverPopup(winner) {
-  const overlay = document.getElementById("overlay");
-  const popup = document.getElementById("game-over-popup");
-  const popupMessage = document.getElementById("popup-message");
-  const playAgainButton = document.getElementById("play-again");
+restart.addEventListener("click", restartGame);
 
-  popupMessage.textContent = `${winner} wins!`;
-  popup.classList.remove("hidden");
-  popup.classList.remove("hidden");
+//open the restart popup
+function openEndPop() {
+  endPop.classList.add("active");
+  overlay.classList.add("active");
+}
 
-  //disabling game when the popup comes on
+//function for end of the game
 
-  rock.disabled = true;
-  paper.disabled = true;
-  scissors.disabled = true;
+function restartGame() {
+  winsCp = 0;
+  winsPl = 0;
+  winner = "";
+  countPl.textContent = `${winsPl}`;
+  countCp.textContent = `${winsCp}`;
 
-  // Handle the "Play Again" button click event
-  playAgainButton.addEventListener("click", () => {
-    overlay.style.display = "none";
-    popup.style.display = "none";
-    overlay.style.display = "block";
-    winsPl = 0;
-    winsCp = 0;
-    countPl.textContent = `${winsPl}`;
-    countCp.textContent = `${winsCp}`;
-    score.textContent = "Let's play again.";
-    overlay.classList.add("hidden");
-    popup.classList.add("hidden");
-
-    rock.disabled = false;
-    paper.disabled = false;
-    scissors.disabled = false;
-  });
+  score.textContent = "Welcome player. Care to join me on a game of RPC?";
+  endPop.classList.remove("active");
+  overlay.classList.remove("active");
 }
 
 const restartButton = document.getElementById("restart-button");

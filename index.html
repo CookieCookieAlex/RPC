@@ -31,7 +31,7 @@
         <div>
           <div id="cpSign">?</div>
           <p>Computer: </p>
-          <div id="winscp" class="plCoun">0</div>
+          <div id="winscp" class="cpCoun">0</div>
         </div>
       </div>
     </div>
@@ -45,15 +45,20 @@
     <h2>By Leonardo</h2>
   </footer>
 
-
-  <div id="game-over-popup" class="hidden">
+  <div id="end-popup" class="modal">
+    <div id="popup-content">
+      <p>Want to play again?</p>
+      <button class="btnRes" id="restart">Play</button>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <!-- <div id="game-over-popup">
     <div id="popup-content">
       <span id="closeButton" class="close">&times;</span>
       <p id="popup-message"></p>
       <button id="play-again">Play Again</button>
     </div>
-    <div id="overlay" class="hidden"></div>
-  </div>
+  </div> -->
 
 </body>
 <script src="script.js" type="text/javascript"></script>
